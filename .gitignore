@@ -1,0 +1,26 @@
+# .NET build artifacts
+bin/
+obj/
+
+# Angular
+**/node_modules/
+**/dist/
+
+# IDE & editor settings
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+
+# Environment files
+*.env
+
+# Others
+wwwroot/assets/temp/
+sample.txt
+sample.docx
+sample.pdf
