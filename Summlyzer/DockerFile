@@ -2,11 +2,13 @@
 FROM mcr.microsoft.com/dotnet/sdk:9.0-preview AS build
 WORKDIR /app
 
-COPY *.csproj ./
+# Copy csproj and restore
+COPY Summlyzer.csproj ./
 RUN dotnet restore
 
+# Copy the rest of the app
 COPY . ./
-RUN dotnet publish -c Release -o out
+RUN dotnet publish -c Release -o /app/out
 
 # Stage 2 - Runtime
 FROM mcr.microsoft.com/dotnet/aspnet:9.0-preview
