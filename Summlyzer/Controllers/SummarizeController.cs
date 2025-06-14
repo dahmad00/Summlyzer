@@ -15,6 +15,13 @@ namespace Summlyzer.Controllers
     [Route("api/[action]")]
     public class SummarizeController : ControllerBase
     {
+        private readonly IConfiguration _configuration;
+
+        public SummarizeController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         [HttpPost]
 
         public async Task<IActionResult> SummarizeText([FromForm] string inputText, [FromForm] int summaryLength)
@@ -149,7 +156,8 @@ namespace Summlyzer.Controllers
             }
 
             // Replace with your actual Hugging Face token
-            var apiToken = "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"; // <-- EDIT THIS VALUE
+            var apiToken = _configuration["HuggingFace:ApiToken"];
+            ; // <-- EDIT THIS VALUE
             httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {apiToken}");
 
             var payload = new
